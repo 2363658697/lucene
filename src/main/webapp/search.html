@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jquery-3.1.0.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#searchBtn").click(
+				function() {
+					$.ajax({
+						url : 'searchFood',
+						data : 'keyWord=' + $("input[name='keyWord']").val(),
+						dataType : 'json',
+						success : function(jd) {
+							$("div[name='c']").remove();
+							for (var i = 0; i < jd.length; i++) {
+								var html = "<div name='c'>" + "   <h3>"
+										+ jd[i].foodName + "</h3> " + "<span>"
+										+ jd[i].foodName + "价格是：" + jd[i].price
+										+ "</span>" + "<hr>" + "</div>";
+								$("#foodDiv").append(html);
+							}
+						}
+					})
+				})
+	})
+</script>
+</head>
+<body>
+  <div>
+     <img  src="bd_logo1.png" width="280px" ><br/>
+     <input type="text" name="keyWord"  style="border:1px solid grey;width:200px;height:25px">
+     <input id="searchBtn" type="button" value="搜索一下"  style="background-color: rgb(51,133,255);color: white;border:0px;height:28px ">
+     <div id="foodDiv">
+     
+     </div>
+  </div>
+</body>
+</html>
