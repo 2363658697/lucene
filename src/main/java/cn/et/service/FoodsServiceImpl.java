@@ -44,7 +44,7 @@ public class FoodsServiceImpl implements FoodsService {
                     e.printStackTrace();
                 }
             }
-            index += rows + 1;
+            index += rows;
         }
 
     }
